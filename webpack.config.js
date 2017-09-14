@@ -1,7 +1,7 @@
 module.exports = {
   entry: "./src/index.ts",
   output: {
-    filename: "channels-web-tils.js",
+    filename: "channels-web-utils.js",
     path: __dirname + "/bin/"
   },
   resolve: {

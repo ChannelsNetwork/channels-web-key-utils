@@ -1,0 +1,12 @@
+{
+  "name": "channels-web-utils",
+  "description": "Crypto utils needed by Channels web client",
+  "main": "index.js",
+  "authors": [
+    "Hivepoint",
+    "Inc."
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ChannelsNetwork/channels-web-utils",
+  "private": true
+}
