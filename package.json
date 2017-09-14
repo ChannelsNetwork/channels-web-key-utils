@@ -1,0 +1,30 @@
+{
+  "name": "channels-web-utils",
+  "version": "1.0.0",
+  "description": "Crypto utils needed by Channels web client ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChannelsNetwork/channels-web-utils.git"
+  },
+  "author": "Hivepoint, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChannelsNetwork/channels-web-utils/issues"
+  },
+  "homepage": "https://github.com/ChannelsNetwork/channels-web-utils#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "ethereumjs-util": "^5.1.2",
+    "jwa": "^1.1.5",
+    "key-encoder": "^1.1.6",
+    "secp256k1": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "ts-loader": "^2.3.7"
+  }
+}
