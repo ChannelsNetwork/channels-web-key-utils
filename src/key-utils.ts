@@ -13,8 +13,10 @@ export class KeyUtils {
     return new Uint8Array(privateKeyBuffer);
   }
 
-  generateKey(): any {
-    const privateKey = this.generatePrivateKey();
+  generateKey(privateKey: Uint8Array): any {
+    if (!privateKey) {
+      privateKey = this.generatePrivateKey();
+    }
     const publicKey = secp256k1.publicKeyCreate(new Buffer(privateKey)) as Uint8Array;
     const ethPublic = ethereumUtils.importPublic(new Buffer(publicKey)) as Uint8Array;
     const address = ethereumUtils.pubToAddress(ethPublic, false) as Uint8Array;
