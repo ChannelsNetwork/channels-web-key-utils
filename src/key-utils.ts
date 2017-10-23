@@ -13,18 +13,21 @@ export class KeyUtils {
     return new Uint8Array(privateKeyBuffer);
   }
 
-  generateKey(privateKey: Uint8Array): any {
-    if (!privateKey) {
-      privateKey = this.generatePrivateKey();
+  generateKey(privateKeyBase64: string): any {
+    let privateKey;
+    if (privateKeyBase64) {
+      privateKey = new Buffer(privateKeyBase64, 'base64');
+    } else {
+      privateKey = new Buffer(this.generatePrivateKey());
     }
-    const publicKey = secp256k1.publicKeyCreate(new Buffer(privateKey)) as Uint8Array;
+    const publicKey = secp256k1.publicKeyCreate(privateKey) as Uint8Array;
     const ethPublic = ethereumUtils.importPublic(new Buffer(publicKey)) as Uint8Array;
     const address = ethereumUtils.pubToAddress(ethPublic, false) as Uint8Array;
     const keyEncoder = new KeyEncoder('secp256k1');
-    const privateKeyPem = keyEncoder.encodePrivate(new Buffer(privateKey).toString('hex'), 'raw', 'pem');
+    const privateKeyPem = keyEncoder.encodePrivate(privateKey.toString('hex'), 'raw', 'pem');
     const publicKeyPem = keyEncoder.encodePublic(new Buffer(publicKey).toString('hex'), 'raw', 'pem');
     return {
-      privateKey: (new Buffer(privateKey).toString('base64')),
+      privateKey: privateKey.toString('base64'),
       privateKeyPem: privateKeyPem,
       publicKey: (new Buffer(publicKey).toString('base64')),
       publicKeyPem: publicKeyPem,
